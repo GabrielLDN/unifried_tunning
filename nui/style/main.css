@@ -1,0 +1,850 @@
+@font-face {
+  font-family: "Verdana Pro Regular", sans-serif;
+  src: url("../fonts/VerdanaPro-Regular.eot");
+  src: url("../fonts/VerdanaPro-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/VerdanaPro-Regular.woff") format("woff"), url("../fonts/VerdanaPro-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "LCD2 Normal";
+  font-style: normal;
+  font-weight: normal;
+  src: local("LCD2 Normal"), url("../fonts/LCD2N___.woff") format("woff");
+}
+@font-face {
+  font-family: "Stolzl Display";
+  src: url("../fonts/StolzlDisplay-Bold.eot");
+  src: local("Stolzl Display Bold"), local("StolzlDisplay-Bold"), url("../fonts/StolzlDisplay-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/StolzlDisplay-Bold.woff2") format("woff2"), url("../fonts/StolzlDisplay-Bold.woff") format("woff"), url("../fonts/StolzlDisplay-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+body {
+  font-family: "Verdana Pro Regular", sans-serif;
+  font-weight: 200;
+  font-size: 2vh;
+  color: #fff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Fueltech */
+.mainFTContainer {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* MINIMIZED
+.mainFTContainer {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translate(25%, -10%) scale(0.5);
+}
+*/
+.fueltechMold {
+  width: 80vh;
+  height: 80vh;
+}
+
+.fueltechScreenContainer {
+  position: absolute;
+  background-color: #0b0b0b;
+  width: 44.5vh;
+  height: 26vh;
+  top: 49%;
+  left: 50%;
+  transform: translate(-51%, -51%);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0.2rem;
+}
+
+/* WideBand */
+.mainWBContainer {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -207%);
+}
+
+/* MINIMIZED
+.mainWBContainer {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translate(0%, 30%) scale(0.5);
+}
+*/
+.widebandMold {
+  width: 34vh;
+  height: 18vh;
+}
+
+.widebandScreenContainer {
+  position: absolute;
+  background-color: #2f2f2f;
+  width: 21.5vh;
+  height: 8.5vh;
+  top: 49%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "LCD2 Normal", sans-serif;
+  font-weight: 400;
+  font-size: 7vh;
+  text-align: center;
+}
+.widebandScreenContainer #lambdaValue {
+  color: #ff0000;
+  text-shadow: 0px 0px 10px;
+}
+
+/* Splash Sreen (Start screen) */
+.splashScreen {
+  position: absolute;
+  transform: translate(-7px, -7px);
+  width: 44.5vh;
+  height: 26vh;
+  background-color: #000;
+  border: 1px solid rgba(255, 0, 0, 0.4196078431);
+  z-index: 10;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+}
+.splashScreen #ftBadge {
+  position: absolute;
+  background-color: #ff0000;
+  padding: 0.2rem;
+  top: 0;
+}
+.splashScreen #ftBadge img {
+  height: 1.5vh;
+}
+.splashScreen #centerLogo {
+  height: 25vh;
+  margin-top: 1.5rem;
+  margin-left: 1.5rem;
+}
+
+/* Confirmation Modal */
+.confirmationModal {
+  position: absolute;
+  top: 20%;
+  width: 96%;
+  height: 15vh;
+  transform: translateX(1.5%);
+  background-color: #555;
+  border: 3px solid #000;
+  text-align: center;
+  z-index: 9;
+  display: none;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+}
+.confirmationModal #modalTitle {
+  margin: 0;
+}
+.confirmationModal .confirmationModalBtn {
+  margin: 0;
+  outline: 0;
+  border: 0;
+  border-radius: 0.3vh;
+  color: #fff;
+  font-size: 2.2vh;
+  padding: 0.5vh 5vh;
+  margin: 0.5vh 1vh;
+}
+.confirmationModal .confirmationModalBtn:hover {
+  filter: brightness(70%);
+  transition: all 0.5s;
+}
+.confirmationModal #yesBtn {
+  background-color: #008000;
+}
+.confirmationModal #noBtn {
+  background-color: #ff0000;
+}
+
+/* Shift Light */
+.shiftLightContainer {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background-color: #ffff25;
+  width: 98.5%;
+  height: 65%;
+  top: 8.5vh;
+  text-align: center;
+  z-index: 9;
+}
+.shiftLightContainer h1 {
+  color: #fc1b0e;
+  font-size: 5em;
+  font-family: "Stolzl Display", Arial;
+  font-weight: bold;
+  font-style: normal;
+  text-shadow: 0px 0px 10px;
+}
+
+/* Alert Notification */
+.alertNotification {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translate(2%, -10%);
+  background-color: #ff0000;
+  width: 96%;
+  height: 9vh;
+  text-align: center;
+  z-index: 8;
+}
+.alertNotification #alertTitle {
+  margin: 0.5vh;
+}
+.alertNotification::before {
+  position: absolute;
+  left: 0;
+  top: 2vh;
+  margin-left: 1vh;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 4vh;
+  content: "\f071";
+}
+.alertNotification::after {
+  position: absolute;
+  right: 0;
+  top: 2vh;
+  margin-right: 1vh;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 4vh;
+  content: "\f071";
+}
+
+/* Password Dialog */
+.passwordDialog {
+  position: absolute;
+  right: 50%;
+  transform: translate(50%, 2%);
+  width: 24vh;
+  height: 24vh;
+  background-color: #555;
+  border: 3px solid #000;
+  z-index: 9;
+  display: none;
+  flex-direction: column;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+}
+.passwordDialog #passwordTitle {
+  margin: 0;
+  font-size: 2vh;
+}
+.passwordDialog #passwordDescription {
+  margin: 0;
+  font-size: 2vh;
+}
+.passwordDialog #passwordShow {
+  color: #fff;
+  background: #000;
+  outline: none;
+  border: 0;
+  width: 20vh;
+  height: 2vh;
+  font-size: 1.8vh;
+  text-align: center;
+}
+.passwordDialog #pDigits {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+.passwordDialog #pDigits button {
+  color: #fff;
+  background-color: #3b3b3b;
+  outline: none;
+  border: 0;
+  width: 6.5vh;
+  height: 3vh;
+  font-size: 2vh;
+}
+.passwordDialog #pDigits button:hover {
+  filter: brightness(70%);
+  transition: all 0.5s;
+}
+.passwordDialog #confirmButtons {
+  bottom: 5%;
+  position: absolute;
+}
+.passwordDialog #confirmButtons .confirmationPasswordBtn {
+  outline: none;
+  border: 0;
+  border-radius: 0.3vh;
+  color: #fff;
+  font-size: 2.5vh;
+  width: 10vh;
+  height: 3vh;
+  margin-top: 1vh;
+}
+.passwordDialog #confirmButtons .confirmationPasswordBtn:hover {
+  filter: brightness(70%);
+  transition: all 0.5s;
+}
+.passwordDialog #confirmButtons #yesBtn {
+  background-color: #008000;
+}
+.passwordDialog #confirmButtons #noBtn {
+  background-color: #ff0000;
+}
+
+/* Parameters Screen */
+#parametersScreen {
+  display: block;
+}
+#parametersScreen .rpmNumberContainer .rpmNumber {
+  margin-left: 5vh;
+  font-weight: 500;
+  font-size: 3.2vh;
+  text-shadow: 0px 0px 5px;
+}
+#parametersScreen .rpmNumberContainer .rpmText {
+  color: #bcbcbc;
+  font-weight: 500;
+}
+#parametersScreen .rpmBarContainer .rpmBar {
+  width: 98.5%;
+  height: 5.5vh;
+  max-width: 98.5%;
+  background-color: rgba(74, 74, 74, 0.5960784314);
+  position: absolute;
+  top: 0.8vh;
+  -webkit-clip-path: polygon(0% 55%, 27.5% 55%, 52.5% 52%, 60% 47%, 65% 40%, 72.5% 25%, 80% 15%, 87.5% 5%, 95% 0%, 97.5% 0%, 100% 0%, 100% 100%, 0% 100%);
+          clip-path: polygon(0% 55%, 27.5% 55%, 52.5% 52%, 60% 47%, 65% 40%, 72.5% 25%, 80% 15%, 87.5% 5%, 95% 0%, 97.5% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+#parametersScreen .rpmBarContainer .rpmBar:after {
+  content: "";
+  display: block;
+  width: var(--rpmBarVal, 80%);
+  height: 100%;
+  max-width: 100%;
+  background: linear-gradient(90deg, #ffe025 40%, #ff971a 50%, #fc1b0e 75%);
+  background-size: 45vh 0.25em;
+}
+#parametersScreen .rpmBarContainer .rpmCenterDivider {
+  margin-top: 2.4vh;
+  margin-bottom: 0;
+  border: 1px solid #4a4a4a;
+}
+#parametersScreen .rpmBarContainer .rpmGuideNumbers {
+  display: flex;
+  justify-content: space-between;
+  color: #dcdcdc;
+  font-size: 1.5vh;
+  font-weight: 500;
+}
+#parametersScreen .logAlertContainer {
+  position: absolute;
+  top: 1.2vh;
+  right: 45%;
+  color: #ff0000;
+  font-size: 1.6vh;
+  font-weight: 600;
+  text-shadow: 0px 0px 5px;
+  animation: blink 1.5s infinite;
+  display: none;
+}
+#parametersScreen .infosContainer {
+  margin-top: 2vh;
+}
+#parametersScreen .infosContainer .infosRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  text-align: end;
+}
+#parametersScreen .infosContainer .infosRow#row2 {
+  margin-top: 1.5vh;
+}
+#parametersScreen .infosContainer .infosRow span {
+  color: #e18513;
+  font-size: 1.8vh;
+}
+#parametersScreen .infosContainer .infosRow p {
+  text-align: center;
+  font-weight: 600;
+  font-size: 3vh;
+  margin: 0;
+}
+
+/* MAIN MENU */
+#ftMainMenu {
+  display: none;
+  margin: 0.5vh 1vh;
+}
+#ftMainMenu .mainMenuHeader {
+  line-height: 0.8;
+  margin-bottom: 0.4vh;
+}
+#ftMainMenu .mainMenuHeader h5 {
+  margin: 0;
+  font-weight: 600;
+}
+#ftMainMenu .mainMenuHeader span {
+  font-size: 1.2vh;
+  margin: 0;
+}
+#ftMainMenu .mainMenuElements {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+#ftMainMenu .elementsRow {
+  display: flex;
+  flex-direction: column;
+  margin-right: 0.5vh;
+}
+#ftMainMenu #lastElements {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+#ftMainMenu .element {
+  transition: all 0.5s;
+}
+#ftMainMenu .element img {
+  width: 14vh;
+}
+#ftMainMenu .element:hover {
+  filter: brightness(80%);
+}
+#ftMainMenu .element.selected {
+  filter: brightness(60%);
+}
+#ftMainMenu #thirdElementsRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* Select map params screen */
+.selectMapOption {
+  display: none;
+}
+.selectMapOption #injectionMaps {
+  display: none;
+}
+.selectMapOption #ignitionMaps {
+  display: none;
+}
+.selectMapOption #dragFunctions {
+  display: none;
+}
+.selectMapOption #interfaceSettings {
+  display: none;
+}
+.selectMapOption #otherFunctions {
+  display: none;
+}
+.selectMapOption #adjustsManager {
+  display: none;
+}
+.selectMapOption #alertsSettings {
+  display: none;
+}
+.selectMapOption .selectedMapHeader {
+  padding: 0.5vh 0 0.5vh 1vh;
+}
+.selectMapOption .selectedMapHeader span {
+  font-size: 2vh;
+  font-weight: 500;
+  margin-top: 0;
+}
+.selectMapOption .tuneMapsList {
+  margin: 0.5vh 0 0.5vh 0;
+  padding: 0;
+  overflow-y: auto;
+  max-height: 18vh;
+}
+.selectMapOption .tuneMapsList li {
+  list-style-type: none;
+  position: relative;
+  background: #414650;
+  font-family: sans-serif;
+  padding: 1vh 0 1vh 0;
+  margin-bottom: 0.3vh;
+  transition: all 0.5s ease;
+}
+.selectMapOption .tuneMapsList li span {
+  margin: 0.5vh 0 0.5vh 2vh;
+}
+.selectMapOption .tuneMapsList li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  background-color: var(--before-bg-color, #87a3ba);
+  height: 100%;
+  width: 1.2vh;
+  transition: background-color 0.5s ease;
+}
+.selectMapOption .tuneMapsList li:hover {
+  filter: brightness(110%);
+}
+.selectMapOption .tuneMapsList li.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+.selectMapOption .tuneMapsList li.selected {
+  filter: brightness(110%);
+}
+
+/* Tuning Map */
+.tuningMapScreen {
+  display: none;
+  height: 75%;
+}
+.tuningMapScreen .tuningMapHeader {
+  padding: 0.5vh 2vh 0.5vh 2vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.tuningMapScreen .tuningMapHeader i {
+  font-size: 3vh;
+}
+.tuningMapScreen .tuningMapHeader i:hover {
+  filter: brightness(80%);
+  transition: all 0.5s;
+}
+.tuningMapScreen .tuningMapHeader span {
+  font-size: 2vh;
+  font-weight: 500;
+  margin-top: 0;
+}
+.tuningMapScreen .tuningMapContainer {
+  height: 98%;
+}
+.tuningMapScreen .graphContainer {
+  padding: 0 1vh;
+  margin: 0.5vh 0;
+  max-height: 10vh;
+  border: 1.5px dashed;
+}
+.tuningMapScreen .graphContainer #currentSelectedParam {
+  position: absolute;
+  background-color: #ff3300;
+  width: 4vh;
+  height: 9.5vh;
+  top: 5vh;
+  left: 112px;
+  z-index: -9;
+}
+.tuningMapScreen .graphContainer #currentEngineTarget {
+  position: absolute;
+  background-color: #ffe025;
+  width: 4vh;
+  height: 9.5vh;
+  top: 5vh;
+  left: 0px;
+  z-index: -10;
+}
+.tuningMapScreen .editChartMapContainer {
+  display: none;
+  background-color: #333;
+  height: 7.2vh;
+  width: 100%;
+}
+.tuningMapScreen .editChartMapContainer .changeEditMapPositionBtn {
+  margin: 0.5vh 0;
+  outline: none;
+  border: 0;
+  background-color: #999;
+  color: #fff;
+  height: 6vh;
+}
+.tuningMapScreen .editChartMapContainer .editMapInfo {
+  margin: 0.5vh;
+  border: 2px solid #ff0000;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tuningMapScreen .editChartMapContainer .editMapInfo div:first-child {
+  margin-top: -2.3vh;
+}
+.tuningMapScreen .editChartMapContainer .editMapInfo div:first-child h3 {
+  font-size: 1.6vh;
+  font-weight: 400;
+  background: #333 none repeat scroll 0 0;
+  display: inline-block;
+  padding: 0 3vh;
+  margin-bottom: 0;
+}
+.tuningMapScreen .editChartMapContainer .editMapInfo .editMapBtnsContainer {
+  background-color: #999;
+  height: 4vh;
+  width: 20vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.tuningMapScreen .editChartMapContainer .editMapInfo .editMapBtnsContainer i {
+  font-size: 1.8vh;
+}
+.tuningMapScreen .editChartMapContainer .editMapInfo .editMapBtnsContainer #currentMapParameterValue {
+  background-color: #333;
+  font-size: 1.8vh;
+  padding: 0.6vh 1.8vh;
+}
+.tuningMapScreen .editMapOpsContainer {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.tuningMapScreen .editMapOpsContainer .optionRow {
+  display: flex;
+  gap: 0.1rem;
+  width: 100%;
+  height: 100%;
+}
+.tuningMapScreen .editMapOpsContainer .leftC,
+.tuningMapScreen .editMapOpsContainer .rightC {
+  width: 50% !important;
+  box-sizing: border-box !important;
+}
+.tuningMapScreen .editMapOpsContainer .optionElementContainer {
+  background-color: #333;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.2vh;
+}
+.tuningMapScreen .editMapOpsContainer .optionElementContainer span {
+  font-size: 1.9vh;
+}
+.tuningMapScreen .editMapOpsContainer .optionElementContainer button {
+  transition: all 0.3s;
+}
+.tuningMapScreen .editMapOpsContainer .optionElementContainer button:hover {
+  filter: brightness(0.8);
+}
+.tuningMapScreen .editMapOpsContainer .optionElementContainer .staticButton {
+  min-width: 18vh;
+  min-height: 3.5vh;
+  font-size: 2vh;
+  background: #a9a9a9;
+  color: #fff;
+  border: 0;
+  margin: 0;
+  outline: none;
+}
+.tuningMapScreen .editMapOpsContainer .optionElementContainer .staticButton:disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+.tuningMapScreen .editMapOpsContainer .optionElementContainer .optionToggleSwitch {
+  position: relative;
+  display: inline-block;
+  width: 10vh;
+  height: 3.8vh;
+  margin: 1vh;
+}
+.tuningMapScreen .editMapOpsContainer .optionElementContainer .optionToggleSwitch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.tuningMapScreen .editMapOpsContainer .optionElementContainer .optionToggleSwitch input:checked + .slider:before {
+  background-color: #00a54f;
+  transform: translateX(4vh);
+}
+.tuningMapScreen .editMapOpsContainer .optionElementContainer .optionToggleSwitch input:focus + .slider:before {
+  box-shadow: 0 0 1px #00a54f;
+}
+.tuningMapScreen .editMapOpsContainer .optionElementContainer .optionToggleSwitch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: none;
+  border: 0.5vh solid #b3b3b3;
+  transition: 0.4s;
+}
+.tuningMapScreen .editMapOpsContainer .optionElementContainer .optionToggleSwitch .slider:before {
+  position: absolute;
+  content: "";
+  height: 2.6vh;
+  width: 5vh;
+  margin: 0.15vh;
+  background-color: #ff0000;
+  transition: 0.4s;
+}
+.tuningMapScreen .editMapOpsContainer .optionElementContainer .numberInput-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5px;
+  overflow: hidden;
+  border: 0.2rem solid #999;
+  height: 6vh;
+}
+.tuningMapScreen .editMapOpsContainer .optionElementContainer .numberInput-container .numberInput-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  min-width: 2.5vw;
+}
+.tuningMapScreen .editMapOpsContainer .optionElementContainer .numberInput-container .numberInput-display .numberInput-desc {
+  color: #999;
+  font-size: 1.4vh;
+  text-transform: uppercase;
+}
+.tuningMapScreen .editMapOpsContainer .optionElementContainer .numberInput-container .numberInput-buttons {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.tuningMapScreen .editMapOpsContainer .optionElementContainer .numberInput-container button {
+  background-color: #999;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 0.1rem 1.2rem;
+  font-size: 18px;
+  height: 100%;
+}
+.tuningMapScreen .editMapOpsContainer .optionElementContainer .numberInput-container button:hover {
+  background-color: #888;
+}
+.tuningMapScreen .editMapOpsContainer .optionElementContainer .numberInput-container button:active {
+  background-color: #777;
+}
+
+/* FOOTER BUTTONS */
+.mapFooter {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.mapFooter #cancelButton {
+  margin: 0;
+  outline: none;
+  border: 0;
+  border-radius: 0.05rem;
+  color: #fff;
+  background-color: #ff0000;
+  width: 12vh;
+  min-height: 3vh;
+  font-size: 2.8vh;
+  line-height: 0;
+}
+.mapFooter #backToDashButton {
+  border: 0;
+  padding: 0;
+  background: none;
+}
+.mapFooter #backToDashButton img {
+  width: 2vw;
+  height: 2vh;
+}
+.mapFooter #confirmButton {
+  margin: 0;
+  outline: none;
+  border: 0;
+  border-radius: 0.05rem;
+  color: #fff;
+  background-color: #008000;
+  width: 12vh;
+  min-height: 3vh;
+  font-size: 2.8vh;
+  line-height: 0;
+}
+.mapFooter button:hover {
+  filter: brightness(70%);
+  transition: all 0.5s;
+}
+
+::-moz-selection {
+  color: none;
+  background: none;
+}
+
+::selection {
+  color: none;
+  background: none;
+}
+
+*::-webkit-scrollbar {
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #666666;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #b3b3b3;
+}
+
+.blink {
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}/*# sourceMappingURL=main.css.map */

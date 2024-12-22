@@ -1,0 +1,145 @@
+body {
+    font-family: 'Exo', sans-serif;
+    font-weight: 200;
+    color: #fff;
+}
+
+.mainFTContainer {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.fueltechMold {
+    width: 80vh;
+    height: 80vh;
+}
+
+.fueltechScreenContainer {
+    position: absolute;
+    background-color: #1c1a1b;
+    width: 44.5vh;
+    height: 26vh;
+    top: 49%;
+    left: 50%;
+    transform: translate(-51%, -51%);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 1vh;
+}
+
+/* Parameters Screen */
+#parametersScreen {
+    display: block;
+}
+.rpmText {
+    color: #bcbcbc;
+    font-weight: 500;
+}
+.rpmNumber {
+    margin-left: 3vh;
+    font-weight: 500;
+    font-size: 3.2vh;
+}
+.rpmBar {
+    width: 100%;
+    height: 3vh;
+    max-width: 100%;
+    background-color: #4a4a4a98; 
+}
+.rpmBar:after {
+    content: "";
+    display: block;
+    width: var(--rpmBarVal, 80%);
+    height: 100%;
+    max-width: 100%;
+    background: linear-gradient(90deg, #ffe025 40%, #ff971a 50%, #fc1b0e 75%);
+    background-size: 22.5em 0.25em
+}
+.rpmGuideNumbers {
+    color: #bcbcbc;
+    margin: 0.1vh 0 0 4vh;
+    letter-spacing: 1.45vh;
+    font-size: 1.5vh;
+    font-weight: 500;
+}
+.rpmGuideNumbers::after {
+    content: "10";
+    margin-left: 1.3vh;
+    letter-spacing: 0;
+}
+.infosRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 1vh;
+}
+.infosRow span {
+    color: #e18513;
+    font-size: 1.5vh;
+}
+.infosRow p {
+    text-align: center;
+    font-weight: 500;
+    font-size: 2.8vh;
+    margin: 0;
+}
+
+/* MAIN MENU */
+#ftMainMenu {
+    display: none;
+}
+#ftMainMenu 
+
+/* Select map params screen */
+.selectParamsScreen {
+    display: none;
+}
+#injectionMaps {display: none;}
+#ignitionMaps {display: none;}
+#injectionMaps .selectParamsHeader {
+    background-color: #00bfff;
+    padding: 0.5vh 0 0.5vh 1vh;
+}
+#ignitionMaps .selectParamsHeader {
+    background-color: #ffd900;
+    padding: 0.5vh 0 0.5vh 1vh;
+}
+.selectParamsHeader span {
+    font-size: 2vh;
+    font-weight: 500;
+    margin-top: 0;
+}
+.tuneParamsList {
+    margin: 0.5vh 0 0.5vh 0;
+    padding: 0;
+    overflow-y: auto;
+    max-height: 22vh;
+}
+#parameter {
+    list-style-type: none;
+    position: relative;
+    background: #414650;
+    font-family: sans-serif;
+    padding: 1vh 0 1vh 0;
+    margin-bottom: 0.3vh;
+}
+#parameter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    background-color: #87a3ba;
+    height: 100%;
+    width: 1.2vh;
+}
+#parameter span {
+    margin: 0.5vh 0 0.5vh 2vh;
+}
+#parameter:hover {
+    filter: brightness(150%);
+    transition: all 0.5s ease;
+}

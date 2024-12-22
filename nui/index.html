@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
+      integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link rel="stylesheet" href="./style/main.css" />
+    <title>FuelTech ECU</title>
+  </head>
+  <body>
+    <div class="mainFTContainer">
+      <img src="./imgs/ft450.png" class="fueltechMold" />
+      <audio id="ftBeep" src="sounds/beep.ogg" type="audio/ogg"></audio>
+      <div class="fueltechScreenContainer">
+        <div class="splashScreen">
+          <div id="ftBadge">
+            <img src="./imgs/fueltech_badge.png" alt="FuelTech Badge" />
+          </div>
+          <img
+            id="centerLogo"
+            src="./imgs/brasiliarp_logo.png"
+            alt="BrasiliaRP Logo"
+          />
+        </div>
+        <div class="confirmationModal">
+          <h3 id="modalTitle">Atenção!</h3>
+          <span id="modalDescription">Deseja salvar as alterações?</span>
+          <div>
+            <button class="confirmationModalBtn" id="yesBtn">Sim</button>
+            <button class="confirmationModalBtn" id="noBtn">Não</button>
+          </div>
+        </div>
+        <div class="shiftLightContainer">
+          <h1>SHIFT</h1>
+        </div>
+        <div class="alertNotification">
+          <h3 id="alertTitle">Alerta!</h3>
+          <span id="alertDesc">Excesso de Rotação!</span>
+        </div>
+        <div class="passwordDialog" tabindex="0">
+          <h4 id="passwordTitle">Senha da ECU</h4>
+          <span id="passwordDescription">Digite a nova senha</span>
+          <input id="passwordShow" disabled />
+          <div id="pDigits">
+            <div>
+              <button id="pDigit" data-digit="1">1</button>
+              <button id="pDigit" data-digit="2">2</button>
+              <button id="pDigit" data-digit="3">3</button>
+            </div>
+            <div>
+              <button id="pDigit" data-digit="4">4</button>
+              <button id="pDigit" data-digit="5">5</button>
+              <button id="pDigit" data-digit="6">6</button>
+            </div>
+            <div>
+              <button id="pDigit" data-digit="7">7</button>
+              <button id="pDigit" data-digit="8">8</button>
+              <button id="pDigit" data-digit="9">9</button>
+            </div>
+            <div>
+              <button id="pDigit" data-digit="0">0</button>
+              <button id="pDigit" data-digit="-1">
+                <span>
+                  <i class="fa-solid fa-delete-left"></i>
+                </span>
+              </button>
+            </div>
+          </div>
+          <div id="confirmButtons">
+            <button
+              class="confirmationPasswordBtn"
+              id="noBtn"
+              data-confirm="false"
+            >
+              <span>
+                <i class="fa-solid fa-xmark"></i>
+              </span>
+            </button>
+            <button
+              class="confirmationPasswordBtn"
+              id="yesBtn"
+              data-confirm="true"
+            >
+              <span>
+                <i class="fa-solid fa-check"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <div id="parametersScreen">
+          <div class="rpmNumberContainer">
+            <span class="rpmNumber">8000</span>
+            <span class="rpmText">RPM</span>
+          </div>
+          <div class="rpmBarContainer">
+            <div class="rpmBar"></div>
+            <hr class="rpmCenterDivider" />
+            <div class="rpmGuideNumbers">
+              <span style="visibility: hidden" id="guideNumber0">0</span>
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+              <span>4</span>
+              <span>5</span>
+              <span>6</span>
+              <span>7</span>
+              <span>8</span>
+            </div>
+          </div>
+          <div class="logAlertContainer">
+            <span><i class="fa-solid fa-circle"></i></span>
+            <span>REC</span>
+          </div>
+          <div class="infosContainer">
+            <div class="infosRow" id="row1">
+              <div id="param0">
+                <span>T. Motor</span>
+                <p>90.0</p>
+              </div>
+              <div id="param1">
+                <span>T. Ar</span>
+                <p>14.0</p>
+              </div>
+              <div id="param2">
+                <span>P. Comb</span>
+                <p>3.8</p>
+              </div>
+            </div>
+            <div class="infosRow" id="row2">
+              <div id="param3">
+                <span>MAP</span>
+                <p>1.2</p>
+              </div>
+              <div id="param4">
+                <span>P. Ignição</span>
+                <p>32.0</p>
+              </div>
+              <div id="param5">
+                <span>P. Óleo</span>
+                <p>3.6</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="ftMainMenu">
+          <div class="mainMenuHeader">
+            <h5>Menu Principal</h5>
+            <span>Outras funções</span>
+          </div>
+          <div class="mainMenuElements">
+            <div class="elementsRow" id="firstElementsRow">
+              <div id="lastElements"></div>
+            </div>
+            <div class="elementsRow" id="secondElementsRow">
+              <div id="lastElements"></div>
+            </div>
+            <div class="elementsRow" id="thirdElementsRow">
+              <div id="lastElements"></div>
+            </div>
+            <div id="engineOption" class="element" data-action="engine">
+              <img src="./imgs/engine.png" alt="Configurações do Motor" style="width: 7vh; height: 7vh" />
+            </div>       
+          </div>
+        </div>
+        <div class="selectMapOption">
+          <div class="mapFooter">
+            <button id="cancelButton" type="button">
+              <span><i class="fa-solid fa-xmark"></i></span>
+            </button>
+            <button id="backToDashButton">
+              <img src="./imgs/dashboard_footer_icon.png" />
+            </button>
+            <button id="confirmButton" type="button">
+              <span><i class="fa-solid fa-check"></i></span>
+            </button>
+          </div>
+        </div>
+        <div class="tuningMapScreen">
+          <div class="tuningMapHeader">
+            <i class="fa-solid fa-angle-left" data-direction="left"></i>
+            <span>Título Mapa</span>
+            <i class="fa-solid fa-angle-right" data-direction="right"></i>
+          </div>
+          <div class="tuningMapContainer">
+            <div class="graphContainer" id="mapPressure">
+              <canvas id="myChart"></canvas>
+              <div id="currentSelectedParam"></div>
+              <div id="currentEngineTarget"></div>
+            </div>
+
+            <div class="editChartMapContainer">
+              <!-- CHART MAP BASED -->
+              <button class="changeEditMapPositionBtn" id="previousParam">
+                <span><i class="fa-solid fa-angle-left"></i></span>
+              </button>
+              <div class="editMapInfo">
+                <div>
+                  <h3 id="editingParameter">Parameter</h3>
+                </div>
+                <div class="editMapBtnsContainer">
+                  <span id="decreaseParamValue"
+                    ><i class="fa-solid fa-minus"></i
+                  ></span>
+                  <span id="currentMapParameterValue">Param Val</span>
+                  <span id="increaseParamValue"
+                    ><i class="fa-solid fa-plus"></i
+                  ></span>
+                </div>
+              </div>
+              <button class="changeEditMapPositionBtn" id="nextParam">
+                <span><i class="fa-solid fa-angle-right"></i></span>
+              </button>
+            </div>
+
+            <div class="editMapOpsContainer"><!-- OPTIONS MAP BASED --></div>
+          </div>
+
+          <div class="mapFooter">
+            <button id="cancelButton" type="button">
+              <span><i class="fa-solid fa-xmark"></i></span>
+            </button>
+            <button id="backToDashButton">
+              <img src="./imgs/dashboard_footer_icon.png" />
+            </button>
+            <button id="confirmButton" type="button">
+              <span><i class="fa-solid fa-check"></i></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mainWBContainer">
+      <img src="./imgs/wideband-nano.png" class="widebandMold" />
+      <div class="widebandScreenContainer">
+        <span id="lambdaValue">0.82</span>
+      </div>
+    </div>
+    <script src="./js/main.js" type="module"></script>
+    <script src="./js/chartsGen.js" type="module"></script>
+  </body>
+</html>
