@@ -21,10 +21,10 @@ server_scripts {
 
 files {
     'data/*.txt'
-    'nui/index.html',
-    'nui/js/*.js',
-    'nui/imgs/*.png',
-    'nui/style/*.css'
+    'nui/index.*',
+    'nui/js/*.*',
+    'nui/imgs/*.*',
+    'nui/style/*.*'
 }
 
 ui_page 'nui/index.html'

@@ -223,6 +223,15 @@ RegisterCommand(Commands.CheckTune["Command"], function(source, args, rawCommand
     end
 end, false)
 
+RegisterCommand('abrir_ecu', function()
+    SetNuiFocus(true, true) -- Habilita o foco no NUI
+    SendNUIMessage({
+        type = 'open', -- Define o tipo de evento esperado pelo NUI
+        status = 'full' -- Exemplo de status para exibir a interface completa
+    })
+end, false)
+
+
 RegisterServerEvent("unifried_tunning:server:connection")
 AddEventHandler("unifried_tunning:server:connection", function()
     if (source > 0) then

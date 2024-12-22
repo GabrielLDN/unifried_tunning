@@ -148,5 +148,13 @@ VehicleHandler = function(currentVehicle, vehiclePlate, vehicleModel)
         print("Configurações do motor acionadas!")
         -- Aqui você pode usar `VehicleHandler` ou criar lógica customizada
     end
+    RegisterCommand('abrir_ecu', function()
+        SetNuiFocus(true, true) -- Habilita o foco no NUI
+        SendNUIMessage({
+            type = 'open', -- Este "type" é esperado pelo evento no JavaScript
+            status = 'full' -- Garante que a interface seja exibida no modo completo
+        })
+    end, false)
+    
     
 end
